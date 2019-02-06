@@ -28,37 +28,38 @@ class DriverLibrary(object):
 
     def __init__(self, status_socket=DEFAULT_STATUS_SOCKET,
                  stats_socket=DEFAULT_STATS_SOCKET, **kwargs):
-        self.sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
-        self.sock.settimeout(SOCKET_TIMEOUT)
         self.status_socket = status_socket
         self.stats_socket = stats_socket
 
         super(DriverLibrary, self).__init__(**kwargs)
 
-    def _recv(self):
-        size_str = ''
-        char = self.sock.recv(1)
-        while char != '\n':
+    def _recv(self, sock):
+        size_str = b''
+        char = sock.recv(1)
+        while char != b'\n':
             size_str += char
-            char = self.sock.recv(1)
+            char = sock.recv(1)
         payload_size = int(size_str)
         mv_buffer = memoryview(bytearray(payload_size))
         next_offset = 0
         while payload_size - next_offset > 0:
-            recv_size = self.sock.recv_into(mv_buffer[next_offset:],
-                                            payload_size - next_offset)
+            recv_size = sock.recv_into(mv_buffer[next_offset:],
+                                       payload_size - next_offset)
             next_offset += recv_size
         return jsonutils.loads(mv_buffer.tobytes())
 
     def _send(self, socket_path, data):
-        self.sock.connect(socket_path)
+        sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+        sock.settimeout(SOCKET_TIMEOUT)
+        sock.connect(socket_path)
         try:
-            json_data = jsonutils.dumps(data)
-            self.sock.send('%d\n' % len(json_data))
-            self.sock.sendall(json_data)
-            response = self._recv()
+            json_data = jsonutils.dump_as_bytes(data)
+            len_str = '{}\n'.format(len(json_data)).encode('utf-8')
+            sock.send(len_str)
+            sock.sendall(json_data)
+            response = self._recv(sock)
         finally:
-            self.sock.close()
+            sock.close()
         return response
 
     def update_loadbalancer_status(self, status):

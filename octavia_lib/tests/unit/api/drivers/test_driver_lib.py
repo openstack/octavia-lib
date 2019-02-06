@@ -21,40 +21,41 @@ from octavia_lib.tests.unit import base
 
 class TestDriverLib(base.TestCase):
     def setUp(self):
-        self.mock_socket = mock.MagicMock()
-        with mock.patch('socket.socket') as socket_mock:
-            socket_mock.return_value = self.mock_socket
-            self.driver_lib = driver_lib.DriverLibrary()
+        self.driver_lib = driver_lib.DriverLibrary()
 
         super(TestDriverLib, self).setUp()
 
     @mock.patch('six.moves.builtins.memoryview')
     def test_recv(self, mock_memoryview):
-        self.mock_socket.recv.side_effect = ['1', '\n']
-        self.mock_socket.recv_into.return_value = 1
+        mock_socket = mock.MagicMock()
+        mock_socket.recv.side_effect = [b'1', b'\n']
+        mock_socket.recv_into.return_value = 1
         mv_mock = mock.MagicMock()
         mock_memoryview.return_value = mv_mock
-        mv_mock.tobytes.return_value = '"test data"'
+        mv_mock.tobytes.return_value = b'"test data"'
 
-        response = self.driver_lib._recv()
+        response = self.driver_lib._recv(mock_socket)
 
         calls = [mock.call(1), mock.call(1)]
 
-        self.mock_socket.recv.assert_has_calls(calls)
-        self.mock_socket.recv_into.assert_called_once_with(
+        mock_socket.recv.assert_has_calls(calls)
+        mock_socket.recv_into.assert_called_once_with(
             mv_mock.__getitem__(), 1)
         self.assertEqual('test data', response)
 
     @mock.patch('octavia_lib.api.drivers.driver_lib.DriverLibrary._recv')
     def test_send(self, mock_recv):
+        mock_socket = mock.MagicMock()
         mock_recv.return_value = 'fake_response'
 
-        response = self.driver_lib._send('fake_path', 'test data')
+        with mock.patch('socket.socket') as socket_mock:
+            socket_mock.return_value = mock_socket
+            response = self.driver_lib._send('fake_path', 'test data')
 
-        self.mock_socket.connect.assert_called_once_with('fake_path')
-        self.mock_socket.send.assert_called_once_with('11\n')
-        self.mock_socket.sendall.assert_called_once_with('"test data"')
-        self.mock_socket.close.assert_called_once()
+        mock_socket.connect.assert_called_once_with('fake_path')
+        mock_socket.send.assert_called_once_with(b'11\n')
+        mock_socket.sendall.assert_called_once_with(b'"test data"')
+        mock_socket.close.assert_called_once()
         self.assertEqual(mock_recv.return_value, response)
 
     @mock.patch('octavia_lib.api.drivers.driver_lib.DriverLibrary._send')
