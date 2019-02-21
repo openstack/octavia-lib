@@ -33,6 +33,7 @@ HEALTHMONITORS = 'healthmonitors'
 MEMBERS = 'members'
 L7POLICIES = 'l7policies'
 L7RULES = 'l7rules'
+FLAVOR = 'flavor'
 
 # ID fields
 ID = 'id'
