@@ -99,9 +99,15 @@ L7RULE_TYPE_PATH = 'PATH'
 L7RULE_TYPE_FILE_TYPE = 'FILE_TYPE'
 L7RULE_TYPE_HEADER = 'HEADER'
 L7RULE_TYPE_COOKIE = 'COOKIE'
+L7RULE_TYPE_SSL_CONN_HAS_CERT = 'SSL_CONN_HAS_CERT'
+L7RULE_TYPE_SSL_VERIFY_RESULT = 'SSL_VERIFY_RESULT'
+L7RULE_TYPE_SSL_DN_FIELD = 'SSL_DN_FIELD'
 SUPPORTED_L7RULE_TYPES = (L7RULE_TYPE_HOST_NAME, L7RULE_TYPE_PATH,
                           L7RULE_TYPE_FILE_TYPE, L7RULE_TYPE_HEADER,
-                          L7RULE_TYPE_COOKIE)
+                          L7RULE_TYPE_COOKIE, L7RULE_TYPE_SSL_CONN_HAS_CERT,
+                          L7RULE_TYPE_SSL_VERIFY_RESULT,
+                          L7RULE_TYPE_SSL_DN_FIELD)
+DISTINGUISHED_NAME_FIELD_REGEX = '^([a-zA-Z][A-Za-z0-9-]*)$'
 
 LB_ALGORITHM_ROUND_ROBIN = 'ROUND_ROBIN'
 LB_ALGORITHM_LEAST_CONNECTIONS = 'LEAST_CONNECTIONS'
@@ -157,3 +163,9 @@ SUPPORTED_SP_TYPES = (SESSION_PERSISTENCE_SOURCE_IP,
 SUPPORTED_HTTP_HEADERS = ['X-Forwarded-For',
                           'X-Forwarded-Port',
                           'X-Forwarded-Proto']
+
+# List of SSL headers for client certificate
+SUPPORTED_SSL_HEADERS = ['X-SSL-Client-Verify', 'X-SSL-Client-Has-Cert',
+                         'X-SSL-Client-DN', 'X-SSL-Client-CN',
+                         'X-SSL-Issuer', 'X-SSL-Client-SHA1',
+                         'X-SSL-Client-Not-Before', 'X-SSL-Client-Not-After']

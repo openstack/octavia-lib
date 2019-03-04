@@ -66,7 +66,8 @@ class TestProviderDataModels(base.TestCase):
             redirect_pool_id=self.pool_id,
             redirect_url='/test',
             rules=[self.ref_l7rule],
-            redirect_prefix='http://example.com')
+            redirect_prefix='http://example.com',
+            redirect_http_code=301)
 
         self.ref_listener = data_models.Listener(
             admin_state_up=True,
@@ -89,7 +90,12 @@ class TestProviderDataModels(base.TestCase):
             timeout_client_data=3,
             timeout_member_connect=4,
             timeout_member_data=5,
-            timeout_tcp_inspect=6)
+            timeout_tcp_inspect=6,
+            client_authentication=None,
+            client_ca_tls_container_data=None,
+            client_ca_tls_container_ref=None,
+            client_crl_container_data=None,
+            client_crl_container_ref=None)
 
         self.ref_lb = data_models.LoadBalancer(
             admin_state_up=False,
@@ -137,7 +143,9 @@ class TestProviderDataModels(base.TestCase):
             pool_id=self.pool_id,
             timeout=4,
             type='HTTP',
-            url_path='/test')
+            url_path='/test',
+            http_version=1.1,
+            domain_name='testdomainname.com')
 
         self.ref_pool = data_models.Pool(
             admin_state_up=True,
@@ -171,7 +179,8 @@ class TestProviderDataModels(base.TestCase):
                                   'redirect_pool_id': self.pool_id,
                                   'redirect_url': '/test',
                                   'rules': [self.ref_l7rule_dict],
-                                  'redirect_prefix': 'http://example.com'}
+                                  'redirect_prefix': 'http://example.com',
+                                  'redirect_http_code': 301}
 
         self.ref_lb_dict = {'project_id': self.project_id,
                             'flavor': {'cake': 'chocolate'},
@@ -206,7 +215,12 @@ class TestProviderDataModels(base.TestCase):
             'timeout_client_data': 3,
             'timeout_member_connect': 4,
             'timeout_member_data': 5,
-            'timeout_tcp_inspect': 6}
+            'timeout_tcp_inspect': 6,
+            'client_authentication': None,
+            'client_ca_tls_container_data': None,
+            'client_ca_tls_container_ref': None,
+            'client_crl_container_data': None,
+            'client_crl_container_ref': None, }
 
         self.ref_lb_dict_with_listener = {
             'admin_state_up': False,
@@ -254,7 +268,9 @@ class TestProviderDataModels(base.TestCase):
             'pool_id': self.pool_id,
             'timeout': 4,
             'type': 'HTTP',
-            'url_path': '/test'}
+            'url_path': '/test',
+            'http_version': 1.1,
+            'domain_name': 'testdomainname.com'}
 
         self.ref_pool_dict = {
             'admin_state_up': True,
