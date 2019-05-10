@@ -98,7 +98,8 @@ class TestProviderDataModels(base.TestCase):
             client_ca_tls_container_data=None,
             client_ca_tls_container_ref=None,
             client_crl_container_data=None,
-            client_crl_container_ref=None)
+            client_crl_container_ref=None,
+            allowed_cidrs=None)
 
         self.ref_lb = data_models.LoadBalancer(
             admin_state_up=False,
@@ -229,7 +230,8 @@ class TestProviderDataModels(base.TestCase):
             'client_ca_tls_container_data': None,
             'client_ca_tls_container_ref': None,
             'client_crl_container_data': None,
-            'client_crl_container_ref': None, }
+            'client_crl_container_ref': None,
+            'allowed_cidrs': None, }
 
         self.ref_lb_dict_with_listener = {
             'admin_state_up': False,

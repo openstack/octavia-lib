@@ -137,7 +137,8 @@ class Listener(BaseDataModel):
                  timeout_tcp_inspect=Unset, client_ca_tls_container_ref=Unset,
                  client_ca_tls_container_data=Unset,
                  client_authentication=Unset, client_crl_container_ref=Unset,
-                 client_crl_container_data=Unset, project_id=Unset):
+                 client_crl_container_data=Unset, project_id=Unset,
+                 allowed_cidrs=Unset):
 
         self.admin_state_up = admin_state_up
         self.connection_limit = connection_limit
@@ -165,6 +166,7 @@ class Listener(BaseDataModel):
         self.client_crl_container_ref = client_crl_container_ref
         self.client_crl_container_data = client_crl_container_data
         self.project_id = project_id
+        self.allowed_cidrs = allowed_cidrs
 
 
 class Pool(BaseDataModel):

@@ -1,0 +1,3 @@
+---
+features:
+  - Added 'allowed_cidrs' field to Listener data model.
