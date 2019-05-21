@@ -59,3 +59,7 @@ ChangeLog
 
 # Files created by releasenotes build
 releasenotes/build
+
+# IDEs
+.idea/*
+.vscode/*
