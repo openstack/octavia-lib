@@ -136,7 +136,7 @@ class Listener(BaseDataModel):
                  timeout_tcp_inspect=Unset, client_ca_tls_container_ref=Unset,
                  client_ca_tls_container_data=Unset,
                  client_authentication=Unset, client_crl_container_ref=Unset,
-                 client_crl_container_data=Unset):
+                 client_crl_container_data=Unset, project_id=Unset):
 
         self.admin_state_up = admin_state_up
         self.connection_limit = connection_limit
@@ -163,6 +163,7 @@ class Listener(BaseDataModel):
         self.client_authentication = client_authentication
         self.client_crl_container_ref = client_crl_container_ref
         self.client_crl_container_data = client_crl_container_data
+        self.project_id = project_id
 
 
 class Pool(BaseDataModel):
@@ -173,7 +174,8 @@ class Pool(BaseDataModel):
                  session_persistence=Unset, tls_container_ref=Unset,
                  tls_container_data=Unset, ca_tls_container_ref=Unset,
                  ca_tls_container_data=Unset, crl_container_ref=Unset,
-                 crl_container_data=Unset, tls_enabled=Unset):
+                 crl_container_data=Unset, tls_enabled=Unset,
+                 project_id=Unset):
 
         self.admin_state_up = admin_state_up
         self.description = description
@@ -193,13 +195,14 @@ class Pool(BaseDataModel):
         self.crl_container_ref = crl_container_ref
         self.crl_container_data = crl_container_data
         self.tls_enabled = tls_enabled
+        self.project_id = project_id
 
 
 class Member(BaseDataModel):
     def __init__(self, address=Unset, admin_state_up=Unset, member_id=Unset,
                  monitor_address=Unset, monitor_port=Unset, name=Unset,
                  pool_id=Unset, protocol_port=Unset, subnet_id=Unset,
-                 weight=Unset, backup=Unset):
+                 weight=Unset, backup=Unset, project_id=Unset):
 
         self.address = address
         self.admin_state_up = admin_state_up
@@ -212,6 +215,7 @@ class Member(BaseDataModel):
         self.subnet_id = subnet_id
         self.weight = weight
         self.backup = backup
+        self.project_id = project_id
 
 
 class HealthMonitor(BaseDataModel):
@@ -219,7 +223,7 @@ class HealthMonitor(BaseDataModel):
                  healthmonitor_id=Unset, http_method=Unset, max_retries=Unset,
                  max_retries_down=Unset, name=Unset, pool_id=Unset,
                  timeout=Unset, type=Unset, url_path=Unset, http_version=Unset,
-                 domain_name=Unset):
+                 domain_name=Unset, project_id=Unset):
 
         self.admin_state_up = admin_state_up
         self.delay = delay
@@ -235,13 +239,15 @@ class HealthMonitor(BaseDataModel):
         self.url_path = url_path
         self.http_version = http_version
         self.domain_name = domain_name
+        self.project_id = project_id
 
 
 class L7Policy(BaseDataModel):
     def __init__(self, action=Unset, admin_state_up=Unset, description=Unset,
                  l7policy_id=Unset, listener_id=Unset, name=Unset,
                  position=Unset, redirect_pool_id=Unset, redirect_url=Unset,
-                 rules=Unset, redirect_prefix=Unset, redirect_http_code=Unset):
+                 rules=Unset, redirect_prefix=Unset, redirect_http_code=Unset,
+                 project_id=Unset):
 
         self.action = action
         self.admin_state_up = admin_state_up
@@ -255,12 +261,13 @@ class L7Policy(BaseDataModel):
         self.rules = rules
         self.redirect_prefix = redirect_prefix
         self.redirect_http_code = redirect_http_code
+        self.project_id = project_id
 
 
 class L7Rule(BaseDataModel):
     def __init__(self, admin_state_up=Unset, compare_type=Unset, invert=Unset,
                  key=Unset, l7policy_id=Unset, l7rule_id=Unset, type=Unset,
-                 value=Unset):
+                 value=Unset, project_id=Unset):
 
         self.admin_state_up = admin_state_up
         self.compare_type = compare_type
@@ -270,6 +277,7 @@ class L7Rule(BaseDataModel):
         self.l7rule_id = l7rule_id
         self.type = type
         self.value = value
+        self.project_id = project_id
 
 
 class VIP(BaseDataModel):

@@ -53,6 +53,7 @@ class TestProviderDataModels(base.TestCase):
             l7policy_id=self.l7policy_id,
             l7rule_id=self.l7rule_id,
             type='COOKIE',
+            project_id=self.project_id,
             value='chocolate')
 
         self.ref_l7policy = data_models.L7Policy(
@@ -66,6 +67,7 @@ class TestProviderDataModels(base.TestCase):
             redirect_pool_id=self.pool_id,
             redirect_url='/test',
             rules=[self.ref_l7rule],
+            project_id=self.project_id,
             redirect_prefix='http://example.com',
             redirect_http_code=301)
 
@@ -82,6 +84,7 @@ class TestProviderDataModels(base.TestCase):
             listener_id=self.listener_id,
             loadbalancer_id=self.loadbalancer_id,
             name='super_listener',
+            project_id=self.project_id,
             protocol='avian',
             protocol_port=42,
             sni_container_data=['sni_cert_data_1', 'sni_cert_data_2'],
@@ -126,6 +129,7 @@ class TestProviderDataModels(base.TestCase):
             monitor_port=8888,
             name='member',
             pool_id=self.pool_id,
+            project_id=self.project_id,
             protocol_port=80,
             subnet_id=self.mem_subnet_id,
             weight=1,
@@ -141,6 +145,7 @@ class TestProviderDataModels(base.TestCase):
             max_retries_down=3,
             name='member',
             pool_id=self.pool_id,
+            project_id=self.project_id,
             timeout=4,
             type='HTTP',
             url_path='/test',
@@ -156,6 +161,7 @@ class TestProviderDataModels(base.TestCase):
             members=[self.ref_member],
             name='pool',
             pool_id=self.pool_id,
+            project_id=self.project_id,
             listener_id=self.listener_id,
             protocol='avian',
             session_persistence=self.session_persistence)
@@ -167,6 +173,7 @@ class TestProviderDataModels(base.TestCase):
                                 'l7policy_id': self.l7policy_id,
                                 'l7rule_id': self.l7rule_id,
                                 'type': 'COOKIE',
+                                'project_id': self.project_id,
                                 'value': 'chocolate'}
 
         self.ref_l7policy_dict = {'action': 'REJECT',
@@ -176,6 +183,7 @@ class TestProviderDataModels(base.TestCase):
                                   'listener_id': self.listener_id,
                                   'name': 'l7policy',
                                   'position': 1,
+                                  'project_id': self.project_id,
                                   'redirect_pool_id': self.pool_id,
                                   'redirect_url': '/test',
                                   'rules': [self.ref_l7rule_dict],
@@ -207,6 +215,7 @@ class TestProviderDataModels(base.TestCase):
             'l7policies': [self.ref_l7policy_dict],
             'loadbalancer_id': self.loadbalancer_id,
             'name': 'super_listener',
+            'project_id': self.project_id,
             'protocol': 'avian',
             'protocol_port': 42,
             'sni_container_data': ['sni_cert_data_1', 'sni_cert_data_2'],
@@ -251,6 +260,7 @@ class TestProviderDataModels(base.TestCase):
             'monitor_port': 8888,
             'name': 'member',
             'pool_id': self.pool_id,
+            'project_id': self.project_id,
             'protocol_port': 80,
             'subnet_id': self.mem_subnet_id,
             'weight': 1,
@@ -266,6 +276,7 @@ class TestProviderDataModels(base.TestCase):
             'max_retries_down': 3,
             'name': 'member',
             'pool_id': self.pool_id,
+            'project_id': self.project_id,
             'timeout': 4,
             'type': 'HTTP',
             'url_path': '/test',
@@ -281,6 +292,7 @@ class TestProviderDataModels(base.TestCase):
             'members': [self.ref_member_dict],
             'name': 'pool',
             'pool_id': self.pool_id,
+            'project_id': self.project_id,
             'listener_id': self.listener_id,
             'protocol': 'avian',
             'session_persistence': self.session_persistence}
