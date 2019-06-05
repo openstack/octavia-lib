@@ -1,6 +1,6 @@
-========
+=====
 Usage
-========
+=====
 
 To use octavia-lib in a project::
 
