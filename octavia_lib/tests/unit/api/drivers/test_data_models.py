@@ -374,6 +374,7 @@ class TestProviderDataModels(base.TestCase):
         new_ref_lib_dict = deepcopy(self.ref_lb_dict)
         new_ref_lib_dict['pools'] = None
         new_ref_lib_dict['listeners'] = None
+        new_ref_lib_dict['additional_vips'] = None
 
         self.assertEqual(new_ref_lib_dict, ref_lb_converted_to_dict)
 
@@ -421,6 +422,7 @@ class TestProviderDataModels(base.TestCase):
         ref_lb_dict_with_listener = deepcopy(self.ref_lb_dict_with_listener)
         ref_lb_dict_with_listener['pools'] = None
         ref_lb_dict_with_listener['name'] = None
+        ref_lb_dict_with_listener['additional_vips'] = None
 
         ref_lb_converted_to_dict = ref_lb.to_dict(recurse=True,
                                                   render_unsets=True)
