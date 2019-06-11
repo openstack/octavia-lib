@@ -23,11 +23,18 @@ class ProviderDriver(object):
     name = None
 
     # Load Balancer
-    def create_vip_port(self, loadbalancer_id, project_id, vip_dictionary):
+    def create_vip_port(self, loadbalancer_id, project_id, vip_dictionary,
+                        additional_vip_dicts):
         """Creates a port for a load balancer VIP.
 
         If the driver supports creating VIP ports, the driver will create a
-        VIP port and return the vip_dictionary populated with the vip_port_id.
+        VIP port with the primary VIP and all additional VIPs added to the
+        port, and return the vip_dictionary populated with the vip_port_id and
+        a list of vip_dictionaries populated with data from the additional
+        VIPs (which are guaranteed to be in the same Network).
+        This might look like:
+        {'port_id': port_id, 'subnet_id': subnet_id_1, 'ip_address': ip1}, [
+            {'subnet_id': subnet_id_2, 'ip_address': ip2}, {...}, {...}]
         If the driver does not support port creation, the driver will raise
         a NotImplementedError.
 
@@ -37,10 +44,15 @@ class ProviderDriver(object):
         :type project_id: string
         :param: vip_dictionary: The VIP dictionary.
         :type vip_dictionary: dict
-        :returns: VIP dictionary with vip_port_id.
+        :param: additional_vip_dicts: A list of additional VIP dictionaries,
+                                      with subnets guaranteed to be in the same
+                                      network as the primary vip_dictionary.
+        :type additional_vip_dicts: list(dict)
+        :returns: VIP dictionary with vip_port_id + a list of additional VIP
+                  dictionaries (vip_dict, additional_vip_dicts).
         :raises DriverError: An unexpected error occurred in the driver.
-        :raises NotImplementedError: The driver does not support creating
-          VIP ports.
+        :raises NotImplementedError: The driver does not support creating VIP
+                                     ports.
         """
         raise exceptions.NotImplementedError(
             user_fault_string='This provider does not support creating VIP '
