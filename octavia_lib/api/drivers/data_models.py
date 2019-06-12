@@ -51,6 +51,7 @@ class BaseDataModel(object):
                 elif isinstance(getattr(self, attr), BaseDataModel):
                     if type(self) not in calling_classes:
                         ret[attr] = value.to_dict(
+                            recurse=recurse,
                             render_unsets=render_unsets,
                             calling_classes=calling_classes + [type(self)])
                     else:
