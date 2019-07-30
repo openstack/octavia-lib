@@ -1,0 +1,11 @@
+---
+features:
+  - |
+    The driver-lib now provides "get" methods for drivers to be able to
+    query for objects by id. For example, get_loadbalancer(loadbalancer_id).
+fixes:
+  - Improved the driver_lib connecting to the driver-agent sockets.
+  - Fixed a bug where the data model to_dict() may not recurse properly.
+  - |
+    Message receiving for the driver_lib will timeout after no response
+    from the driver-agent.

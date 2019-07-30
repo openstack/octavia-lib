@@ -34,6 +34,7 @@ MEMBERS = 'members'
 L7POLICIES = 'l7policies'
 L7RULES = 'l7rules'
 FLAVOR = 'flavor'
+OBJECT = 'object'
 
 # ID fields
 ID = 'id'
