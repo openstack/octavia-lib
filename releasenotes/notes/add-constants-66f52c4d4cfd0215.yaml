@@ -1,0 +1,4 @@
+---
+fixes:
+  - |
+    Added some missing provider driver API field name constants.
