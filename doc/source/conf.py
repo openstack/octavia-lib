@@ -23,6 +23,7 @@ sys.path.insert(0, os.path.abspath('../..'))
 extensions = [
     'sphinx.ext.autodoc',
     'openstackdocstheme',
+    'sphinxcontrib.apidoc'
 ]
 
 # autodoc generation is a bit aggressive and a nuisance when doing heavy
@@ -42,6 +43,13 @@ copyright = u'2018, OpenStack Developers'
 repository_name = 'openstack/octavia-lib'
 bug_project = 'openstack/octavia-lib'
 bug_tag = 'docs'
+
+apidoc_output_dir = 'reference/modules'
+apidoc_module_dir = '../../octavia_lib'
+apidoc_excluded_paths = [
+  'tests',
+  'db/migration'
+]
 
 # If true, '()' will be appended to :func: etc. cross-reference text.
 add_function_parentheses = True

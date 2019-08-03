@@ -33,8 +33,8 @@ class ProviderDriver(object):
         a list of vip_dictionaries populated with data from the additional
         VIPs (which are guaranteed to be in the same Network).
         This might look like:
-        {'port_id': port_id, 'subnet_id': subnet_id_1, 'ip_address': ip1}, [
-            {'subnet_id': subnet_id_2, 'ip_address': ip2}, {...}, {...}]
+        {'port_id': port_id, 'subnet_id': subnet_id_1, 'ip_address': ip1},
+        [{'subnet_id': subnet_id_2, 'ip_address': ip2}, {...}, {...}]
         If the driver does not support port creation, the driver will raise
         a NotImplementedError.
 
