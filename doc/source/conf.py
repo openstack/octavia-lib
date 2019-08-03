@@ -41,8 +41,7 @@ copyright = u'2018, OpenStack Developers'
 
 # openstackdocstheme options
 repository_name = 'openstack/octavia-lib'
-bug_project = 'openstack/octavia-lib'
-bug_tag = 'docs'
+use_storyboard = True
 
 apidoc_output_dir = 'reference/modules'
 apidoc_module_dir = '../../octavia_lib'
