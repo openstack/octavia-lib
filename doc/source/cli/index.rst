@@ -2,7 +2,7 @@
 Command line interface reference
 ================================
 
-Octavia-lib does not provide a CLI.
+The octavia-lib library does not provide a CLI.
 
 See the python-octaviaclient for the Octavia CLI:
 

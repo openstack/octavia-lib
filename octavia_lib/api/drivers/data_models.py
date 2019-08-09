@@ -17,10 +17,6 @@
 
 import six
 
-from oslo_log import log as logging
-
-LOG = logging.getLogger(__name__)
-
 
 class BaseDataModel(object):
     def to_dict(self, calling_classes=None, recurse=False,

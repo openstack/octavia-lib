@@ -2,8 +2,13 @@
 Contributor Documentation
 =========================
 
+Contributor Guidelines
+----------------------
 .. toctree::
-   :maxdepth: 2
+   :glob:
+   :maxdepth: 1
 
-   contributing
+   Octavia Constitution <https://docs.openstack.org/octavia/latest/contributor/CONSTITUTION.html>
+   Octavia Style Commandments <https://docs.openstack.org/octavia/latest/contributor/HACKING.html>
 
+.. include:: ../../../CONTRIBUTING.rst

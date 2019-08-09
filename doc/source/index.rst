@@ -4,15 +4,17 @@
    contain the root `toctree` directive.
 
 ===========================================
-Welcome to the documentation of octavia_lib
+Welcome to the documentation of Octavia lib
 ===========================================
 
-Contents:
+.. include:: ../../README.rst
+
+octavia-lib Documentation:
+--------------------------------
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
-   readme
    install/index
    library/index
    contributor/index

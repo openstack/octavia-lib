@@ -2,7 +2,21 @@
 References
 ==========
 
-References of octavia-lib.
+.. toctree::
+   :glob:
+   :maxdepth: 1
+
+   Octavia Introduction <https://docs.openstack.org/octavia/latest/reference/introduction.html>
+   Octavia Glossary <https://docs.openstack.org/octavia/latest/reference/glossary.html>
+   Octavia Project Documentation <https://docs.openstack.org/octavia/latest/>
+   Octavia API Reference <https://docs.openstack.org/api-ref/load-balancer/>
+
+Indices and Search
+------------------
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
 
 .. toctree::
    :hidden:

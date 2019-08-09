@@ -47,7 +47,9 @@ apidoc_output_dir = 'reference/modules'
 apidoc_module_dir = '../../octavia_lib'
 apidoc_excluded_paths = [
   'tests',
-  'db/migration'
+  'db/migration',
+  'hacking',
+  'i18n.py'
 ]
 
 # If true, '()' will be appended to :func: etc. cross-reference text.
