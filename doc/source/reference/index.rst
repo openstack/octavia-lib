@@ -11,14 +11,21 @@ References
    Octavia Project Documentation <https://docs.openstack.org/octavia/latest/>
    Octavia API Reference <https://docs.openstack.org/api-ref/load-balancer/>
 
-Indices and Search
-------------------
+.. only: html
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+   Indices and Search
+   ------------------
 
-.. toctree::
-   :hidden:
+   * :ref:`genindex`
+   * :ref:`modindex`
+   * :ref:`search`
 
-   modules/modules
+.. only:: latex
+
+   Module Reference
+   ----------------
+
+   .. toctree::
+      :hidden:
+
+      modules/modules

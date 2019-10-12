@@ -3,14 +3,38 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-===========================================
 Welcome to the documentation of Octavia lib
 ===========================================
 
-.. include:: ../../README.rst
+.. only:: html
 
-octavia-lib Documentation:
---------------------------------
+   .. include:: ../../README.rst
+
+.. only:: latex
+
+   .. image:: https://governance.openstack.org/tc/badges/octavia-lib.svg
+
+   A library to support Octavia provider drivers.
+
+   This python module provides a python library for Octavia provider driver
+   developers.
+
+   See the provider driver development guide for more information:
+
+       https://docs.openstack.org/octavia/latest/contributor/guides/providers.html
+
+   Octavia-lib is distributed under the terms of the Apache License, Version 2.0.
+   The full terms and conditions of this license are detailed in the LICENSE file.
+
+   * Free software: Apache license
+   * Documentation: https://docs.openstack.org/octavia-lib/latest
+   * Source: https://opendev.org/openstack/octavia-lib
+   * Bugs: https://storyboard.openstack.org/#!/project/openstack/octavia-lib
+
+.. only:: html
+
+   octavia-lib Documentation:
+   --------------------------
 
 .. toctree::
    :maxdepth: 1
@@ -24,9 +48,11 @@ octavia-lib Documentation:
    admin/index
    reference/index
 
-Indices and tables
-==================
+.. only:: html
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+   Indices and tables
+   ------------------
+
+   * :ref:`genindex`
+   * :ref:`modindex`
+   * :ref:`search`
