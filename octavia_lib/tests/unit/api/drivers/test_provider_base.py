@@ -100,7 +100,7 @@ class TestProviderBase(base.TestCase):
     def test_member_batch_update(self):
         self.assertRaises(exceptions.NotImplementedError,
                           self.driver.member_batch_update,
-                          False)
+                          False, False)
 
     def test_health_monitor_create(self):
         self.assertRaises(exceptions.NotImplementedError,

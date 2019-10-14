@@ -285,9 +285,11 @@ class ProviderDriver(object):
             operator_fault_string='This provider does not support updating '
                                   'members.')
 
-    def member_batch_update(self, members):
+    def member_batch_update(self, pool_id, members):
         """Creates, updates, or deletes a set of pool members.
 
+        :param pool_id: The id of the pool to update.
+        :type pool_id: string
         :param members: List of member objects.
         :type members: list
         :return: Nothing if the create request was accepted.
