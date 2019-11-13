@@ -1,0 +1,4 @@
+---
+features:
+  - |
+    Add driver interface for validating availability zone metadata and support.
