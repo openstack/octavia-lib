@@ -1,0 +1,4 @@
+---
+other:
+  - |
+    Load balancer objects now have an ``availability_zone`` attribute. This can be None.
