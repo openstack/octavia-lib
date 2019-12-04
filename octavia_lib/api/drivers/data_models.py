@@ -103,7 +103,8 @@ class LoadBalancer(BaseDataModel):
                  listeners=Unset, loadbalancer_id=Unset, name=Unset,
                  pools=Unset, project_id=Unset, vip_address=Unset,
                  vip_network_id=Unset, vip_port_id=Unset, vip_subnet_id=Unset,
-                 vip_qos_policy_id=Unset, additional_vips=Unset):
+                 vip_qos_policy_id=Unset, additional_vips=Unset,
+                 availability_zone=Unset):
 
         self.admin_state_up = admin_state_up
         self.description = description
@@ -119,6 +120,7 @@ class LoadBalancer(BaseDataModel):
         self.vip_subnet_id = vip_subnet_id
         self.vip_qos_policy_id = vip_qos_policy_id
         self.additional_vips = additional_vips
+        self.availability_zone = availability_zone
 
 
 class Listener(BaseDataModel):
