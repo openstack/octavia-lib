@@ -503,7 +503,7 @@ class ProviderDriver(object):
 
         :returns: The availability zone metadata dictionary
         :raises DriverError: An unexpected error occurred in the driver.
-        :raises NotImplementedError: The driver does not support flavors.
+        :raises NotImplementedError: The driver does not support AZs.
         """
         raise exceptions.NotImplementedError(
             user_fault_string='This provider does not support getting the '
@@ -511,7 +511,7 @@ class ProviderDriver(object):
             operator_fault_string='This provider does not support getting '
                                   'the supported availability zone metadata.')
 
-    def validate_availability_zone(self, flavor_metadata):
+    def validate_availability_zone(self, availability_zone_metadata):
         """Validates if driver can support the availability zone.
 
         :param availability_zone_metadata: Dictionary with az metadata.
