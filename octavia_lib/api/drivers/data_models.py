@@ -15,8 +15,6 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
-import six
-
 
 class BaseDataModel(object):
     def to_dict(self, calling_classes=None, recurse=False,
@@ -52,8 +50,6 @@ class BaseDataModel(object):
                             calling_classes=calling_classes + [type(self)])
                     else:
                         ret[attr] = None
-                elif six.PY2 and isinstance(value, six.text_type):
-                    ret[attr.encode('utf8')] = value.encode('utf8')
                 elif isinstance(value, UnsetType):
                     if render_unsets:
                         ret[attr] = None

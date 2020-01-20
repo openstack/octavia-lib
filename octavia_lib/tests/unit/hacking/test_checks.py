@@ -167,13 +167,6 @@ class HackingTestCase(base.BaseTestCase):
         self.assertEqual(0, len(list(checks.no_log_warn(
             "LOG.warning()"))))
 
-    def test_no_xrange(self):
-        self.assertEqual(1, len(list(checks.no_xrange(
-            "xrange(45)"))))
-
-        self.assertEqual(0, len(list(checks.no_xrange(
-            "range(45)"))))
-
     def test_no_log_translations(self):
         for log in checks._all_log_levels:
             for hint in checks._all_hints:
@@ -210,17 +203,7 @@ class HackingTestCase(base.BaseTestCase):
             "isinstance('foo', basestring)"))))
 
         self.assertEqual(0, len(list(checks.check_no_basestring(
-            "isinstance('foo', six.string_types)"))))
-
-    def test_dict_iteritems(self):
-        self.assertEqual(1, len(list(checks.check_python3_no_iteritems(
-            "obj.iteritems()"))))
-
-        self.assertEqual(0, len(list(checks.check_python3_no_iteritems(
-            "six.iteritems(obj)"))))
-
-        self.assertEqual(0, len(list(checks.check_python3_no_iteritems(
-            "obj.items()"))))
+            "isinstance('foo', str)"))))
 
     def test_check_no_eventlet_imports(self):
         f = checks.check_no_eventlet_imports

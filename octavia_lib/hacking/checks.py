@@ -57,13 +57,10 @@ assert_not_equal_end_with_none_re = re.compile(
     r"(.)*assertNotEqual\(.+, None\)")
 assert_not_equal_start_with_none_re = re.compile(
     r"(.)*assertNotEqual\(None, .+\)")
-assert_no_xrange_re = re.compile(
-    r"\s*xrange\s*\(")
 revert_must_have_kwargs_re = re.compile(
     r'[ ]*def revert\(.+,[ ](?!\*\*kwargs)\w+\):')
 untranslated_exception_re = re.compile(r"raise (?:\w*)\((.*)\)")
 no_basestring_re = re.compile(r"\bbasestring\b")
-no_iteritems_re = re.compile(r".*\.iteritems\(\)")
 no_eventlet_re = re.compile(r'(import|from)\s+[(]?eventlet')
 no_line_continuation_backslash_re = re.compile(r'.*(\\)\n')
 no_logging_re = re.compile(r'(import|from)\s+[(]?logging')
@@ -182,15 +179,6 @@ def no_log_warn(logical_line):
         yield(0, "O339:Use LOG.warning() rather than LOG.warn()")
 
 
-def no_xrange(logical_line):
-    """Disallow 'xrange()'
-
-    O340
-    """
-    if assert_no_xrange_re.match(logical_line):
-        yield(0, "O340: Do not use xrange().")
-
-
 def no_translate_logs(logical_line, filename):
     """O341 - Don't translate logs.
 
@@ -247,24 +235,7 @@ def check_no_basestring(logical_line):
     """
     if no_basestring_re.search(logical_line):
         msg = ("O343: basestring is not Python3-compatible, use "
-               "six.string_types instead.")
-        yield(0, msg)
-
-
-def check_python3_no_iteritems(logical_line):
-    """O344 - Use dict.items() instead of dict.iteritems().
-
-    :param logical_line: The logical line to check.
-    :returns: None if the logical line passes the check, otherwise a tuple
-              is yielded that contains the offending index in logical line
-              and a message describe the check validation failure.
-    """
-    if no_iteritems_re.search(logical_line):
-        msg = ("O344: Use dict.items() instead of dict.iteritems() to be "
-               "compatible with both Python 2 and Python 3. In Python 2, "
-               "dict.items() may be inefficient for very large dictionaries. "
-               "If you can prove that you need the optimization of an "
-               "iterator for Python 2, then you can use six.iteritems(dict).")
+               "str instead.")
         yield(0, msg)
 
 
@@ -338,10 +309,8 @@ def factory(register):
     register(no_mutable_default_args)
     register(assert_equal_in)
     register(no_log_warn)
-    register(no_xrange)
     register(check_raised_localized_exceptions)
     register(check_no_basestring)
-    register(check_python3_no_iteritems)
     register(check_no_eventlet_imports)
     register(check_line_continuation_no_backslash)
     register(check_no_logging_imports)

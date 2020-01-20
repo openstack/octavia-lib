@@ -43,7 +43,7 @@ class TestDriverLib(base.TestCase):
                           self.driver_lib._check_for_socket_ready,
                           'bogus')
 
-    @mock.patch('six.moves.builtins.memoryview')
+    @mock.patch('builtins.memoryview')
     def test_recv(self, mock_memoryview):
         mock_socket = mock.MagicMock()
         mock_socket.recv.side_effect = [b'1', b'\n', b'2', b'\n', b'3', b'\n']
