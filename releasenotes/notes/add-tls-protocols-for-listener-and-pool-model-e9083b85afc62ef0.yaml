@@ -1,0 +1,9 @@
+---
+features:
+  - |
+    Added a parameter called ``tls_versions`` for
+    passing allowed TLS versions to pools and listeners.
+    The available TLS versions have corresponding
+    constants. The constants are prefixed with
+    ``TLS_VERSION`` (except SSLv3 which is
+    ``SSL_VERSION_3``).

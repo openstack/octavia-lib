@@ -17,6 +17,7 @@ from copy import deepcopy
 from oslo_utils import uuidutils
 
 from octavia_lib.api.drivers import data_models
+from octavia_lib.common import constants
 from octavia_lib.tests.unit import base
 
 
@@ -101,6 +102,11 @@ class TestProviderDataModels(base.TestCase):
             client_crl_container_data=None,
             client_crl_container_ref=None,
             allowed_cidrs=None,
+            tls_versions=[constants.SSL_VERSION_3,
+                          constants.TLS_VERSION_1,
+                          constants.TLS_VERSION_1_1,
+                          constants.TLS_VERSION_1_2,
+                          constants.TLS_VERSION_1_3],
             tls_ciphers=None)
 
         self.ref_lb = data_models.LoadBalancer(
@@ -169,6 +175,11 @@ class TestProviderDataModels(base.TestCase):
             listener_id=self.listener_id,
             protocol='avian',
             session_persistence=self.session_persistence,
+            tls_versions=[constants.SSL_VERSION_3,
+                          constants.TLS_VERSION_1,
+                          constants.TLS_VERSION_1_1,
+                          constants.TLS_VERSION_1_2,
+                          constants.TLS_VERSION_1_3],
             tls_ciphers=None)
 
         self.ref_l7rule_dict = {'admin_state_up': True,
@@ -237,6 +248,11 @@ class TestProviderDataModels(base.TestCase):
             'client_crl_container_data': None,
             'client_crl_container_ref': None,
             'allowed_cidrs': None,
+            'tls_versions': [constants.SSL_VERSION_3,
+                             constants.TLS_VERSION_1,
+                             constants.TLS_VERSION_1_1,
+                             constants.TLS_VERSION_1_2,
+                             constants.TLS_VERSION_1_3],
             'tls_ciphers': None}
 
         self.ref_lb_dict_with_listener = {
@@ -305,6 +321,11 @@ class TestProviderDataModels(base.TestCase):
             'listener_id': self.listener_id,
             'protocol': 'avian',
             'session_persistence': self.session_persistence,
+            'tls_versions': [constants.SSL_VERSION_3,
+                             constants.TLS_VERSION_1,
+                             constants.TLS_VERSION_1_1,
+                             constants.TLS_VERSION_1_2,
+                             constants.TLS_VERSION_1_3],
             'tls_ciphers': None}
 
     def test_equality(self):
@@ -345,9 +366,11 @@ class TestProviderDataModels(base.TestCase):
         ref_list_dict.pop('l7policies', None)
         ref_list_dict.pop('sni_container_data', None)
         ref_list_dict.pop('sni_container_refs', None)
+        ref_list_dict.pop('tls_versions', None)
         ref_pool_dict = deepcopy(self.ref_pool_dict)
         ref_pool_dict['healthmonitor'] = None
         ref_pool_dict.pop('members', None)
+        ref_pool_dict.pop('tls_versions', None)
         ref_l7policy_dict = deepcopy(self.ref_l7policy_dict)
         ref_l7policy_dict.pop('rules', None)
 
