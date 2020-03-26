@@ -1,0 +1,6 @@
+---
+features:
+  - |
+    Added a parameter called ``tls_ciphers``
+    for passing OpenSSL cipher strings in pools
+    and listeners.

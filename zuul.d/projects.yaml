@@ -7,3 +7,7 @@
       - publish-openstack-docs-pti
       - release-notes-jobs-python3
       - octavia-tox-tips
+    check:
+      jobs:
+        - octavia-tox-functional-py37-tips:
+            voting: false

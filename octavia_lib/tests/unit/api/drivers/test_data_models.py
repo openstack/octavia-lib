@@ -100,7 +100,8 @@ class TestProviderDataModels(base.TestCase):
             client_ca_tls_container_ref=None,
             client_crl_container_data=None,
             client_crl_container_ref=None,
-            allowed_cidrs=None)
+            allowed_cidrs=None,
+            tls_ciphers=None)
 
         self.ref_lb = data_models.LoadBalancer(
             admin_state_up=False,
@@ -167,7 +168,8 @@ class TestProviderDataModels(base.TestCase):
             project_id=self.project_id,
             listener_id=self.listener_id,
             protocol='avian',
-            session_persistence=self.session_persistence)
+            session_persistence=self.session_persistence,
+            tls_ciphers=None)
 
         self.ref_l7rule_dict = {'admin_state_up': True,
                                 'compare_type': 'STARTS_WITH',
@@ -234,7 +236,8 @@ class TestProviderDataModels(base.TestCase):
             'client_ca_tls_container_ref': None,
             'client_crl_container_data': None,
             'client_crl_container_ref': None,
-            'allowed_cidrs': None, }
+            'allowed_cidrs': None,
+            'tls_ciphers': None}
 
         self.ref_lb_dict_with_listener = {
             'admin_state_up': False,
@@ -301,7 +304,8 @@ class TestProviderDataModels(base.TestCase):
             'project_id': self.project_id,
             'listener_id': self.listener_id,
             'protocol': 'avian',
-            'session_persistence': self.session_persistence}
+            'session_persistence': self.session_persistence,
+            'tls_ciphers': None}
 
     def test_equality(self):
         second_ref_lb = deepcopy(self.ref_lb)
