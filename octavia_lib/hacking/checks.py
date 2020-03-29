@@ -12,8 +12,6 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-import re
-
 
 """
 Guidelines for writing new hacking checks
@@ -30,6 +28,11 @@ Guidelines for writing new hacking checks
 
 """
 
+
+import re
+
+from hacking import core
+
 _all_log_levels = {'critical', 'error', 'exception', 'info', 'warning'}
 _all_hints = {'_LC', '_LE', '_LI', '_', '_LW'}
 
@@ -41,7 +44,7 @@ _log_translation_hint = re.compile(
 
 assert_trueinst_re = re.compile(
     r"(.)*assertTrue\(isinstance\((\w|\.|\'|\"|\[|\])+, "
-    "(\w|\.|\'|\"|\[|\])+\)\)")
+    r"(\w|\.|\'|\"|\[|\])+\)\)")
 assert_equal_in_end_with_true_or_false_re = re.compile(
     r"assertEqual\((\w|[][.'\"])+ in (\w|[][.'\", ])+, (True|False)\)")
 assert_equal_in_start_with_true_or_false_re = re.compile(
@@ -110,6 +113,7 @@ def _translation_checks_not_enforced(filename):
     return any(pat in filename for pat in ["/tests/", "rally-jobs/plugins/"])
 
 
+@core.flake8ext
 def assert_true_instance(logical_line):
     """Check for assertTrue(isinstance(a, b)) sentences
 
@@ -120,6 +124,7 @@ def assert_true_instance(logical_line):
                "Use assertIsInstance instead.")
 
 
+@core.flake8ext
 def assert_equal_or_not_none(logical_line):
     """Check for assertEqual(A, None) or assertEqual(None, A) sentences,
 
@@ -137,6 +142,7 @@ def assert_equal_or_not_none(logical_line):
         yield (0, msg)
 
 
+@core.flake8ext
 def assert_equal_true_or_false(logical_line):
     """Check for assertEqual(True, A) or assertEqual(False, A) sentences
 
@@ -149,12 +155,14 @@ def assert_equal_true_or_false(logical_line):
                "sentences not allowed")
 
 
+@core.flake8ext
 def no_mutable_default_args(logical_line):
     msg = "O324: Method's default argument shouldn't be mutable!"
     if mutable_default_args.match(logical_line):
         yield (0, msg)
 
 
+@core.flake8ext
 def assert_equal_in(logical_line):
     """Check for assertEqual(A in B, True), assertEqual(True, A in B),
 
@@ -170,6 +178,7 @@ def assert_equal_in(logical_line):
                "contents.")
 
 
+@core.flake8ext
 def no_log_warn(logical_line):
     """Disallow 'LOG.warn('
 
@@ -179,6 +188,7 @@ def no_log_warn(logical_line):
         yield(0, "O339:Use LOG.warning() rather than LOG.warn()")
 
 
+@core.flake8ext
 def no_translate_logs(logical_line, filename):
     """O341 - Don't translate logs.
 
@@ -204,6 +214,7 @@ def no_translate_logs(logical_line, filename):
         yield (logical_line.index(match.group()), msg)
 
 
+@core.flake8ext
 def check_raised_localized_exceptions(logical_line, filename):
     """O342 - Untranslated exception message.
 
@@ -225,6 +236,7 @@ def check_raised_localized_exceptions(logical_line, filename):
             yield (logical_line.index(exception_msg), msg)
 
 
+@core.flake8ext
 def check_no_basestring(logical_line):
     """O343 - basestring is not Python3-compatible.
 
@@ -239,6 +251,7 @@ def check_no_basestring(logical_line):
         yield(0, msg)
 
 
+@core.flake8ext
 def check_no_eventlet_imports(logical_line):
     """O345 - Usage of Python eventlet module not allowed.
 
@@ -252,6 +265,7 @@ def check_no_eventlet_imports(logical_line):
         yield logical_line.index('eventlet'), msg
 
 
+@core.flake8ext
 def check_line_continuation_no_backslash(logical_line, tokens):
     """O346 - Don't use backslashes for line continuation.
 
@@ -273,6 +287,7 @@ def check_line_continuation_no_backslash(logical_line, tokens):
         yield backslash, msg
 
 
+@core.flake8ext
 def check_no_logging_imports(logical_line):
     """O348 - Usage of Python logging module not allowed.
 
@@ -286,6 +301,7 @@ def check_no_logging_imports(logical_line):
         yield logical_line.index('logging'), msg
 
 
+@core.flake8ext
 def check_no_octavia_namespace_imports(logical_line):
     """O501 - Direct octavia imports not allowed.
 
@@ -299,19 +315,3 @@ def check_no_octavia_namespace_imports(logical_line):
         message_override="O501 Direct octavia imports not allowed")
     if x is not None:
         yield x
-
-
-def factory(register):
-    register(assert_true_instance)
-    register(assert_equal_or_not_none)
-    register(no_translate_logs)
-    register(assert_equal_true_or_false)
-    register(no_mutable_default_args)
-    register(assert_equal_in)
-    register(no_log_warn)
-    register(check_raised_localized_exceptions)
-    register(check_no_basestring)
-    register(check_no_eventlet_imports)
-    register(check_line_continuation_no_backslash)
-    register(check_no_logging_imports)
-    register(check_no_octavia_namespace_imports)
