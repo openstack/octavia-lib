@@ -173,6 +173,13 @@ SUPPORTED_SSL_HEADERS = ['X-SSL-Client-Verify', 'X-SSL-Client-Has-Cert',
                          'X-SSL-Issuer', 'X-SSL-Client-SHA1',
                          'X-SSL-Client-Not-Before', 'X-SSL-Client-Not-After']
 
+# Client certification authorization options
+CLIENT_AUTH_NONE = 'NONE'
+CLIENT_AUTH_OPTIONAL = 'OPTIONAL'
+CLIENT_AUTH_MANDATORY = 'MANDATORY'
+SUPPORTED_CLIENT_AUTH_MODES = [CLIENT_AUTH_NONE, CLIENT_AUTH_OPTIONAL,
+                               CLIENT_AUTH_MANDATORY]
+
 # Constants from the provider driver API
 ACTION = 'action'
 ADDITIONAL_VIPS = 'additional_vips'
@@ -183,6 +190,7 @@ AVAILABILITY_ZONE = 'availability_zone'
 BACKUP = 'backup'
 CA_TLS_CONTAINER_DATA = 'ca_tls_container_data'
 CA_TLS_CONTAINER_REF = 'ca_tls_container_ref'
+CASCADE = 'cascade'
 CERTIFICATE = 'certificate'
 CLIENT_AUTHENTICATION = 'client_authentication'
 CLIENT_CA_TLS_CONTAINER_DATA = 'client_ca_tls_container_data'
@@ -222,6 +230,7 @@ MEMBER_ID = 'member_id'
 MONITOR_ADDRESS = 'monitor_address'
 MONITOR_PORT = 'monitor_port'
 NAME = 'name'
+NETWORK_ID = 'network_id'
 PASSPHRASE = 'passphrase'
 PERSISTENCE_GRANULARITY = 'persistence_granularity'
 PERSISTENCE_TIMEOUT = 'persistence_timeout'
