@@ -133,7 +133,7 @@ class Listener(BaseDataModel):
                  client_ca_tls_container_data=Unset,
                  client_authentication=Unset, client_crl_container_ref=Unset,
                  client_crl_container_data=Unset, project_id=Unset,
-                 allowed_cidrs=Unset, tls_ciphers=Unset):
+                 allowed_cidrs=Unset, tls_versions=Unset, tls_ciphers=Unset):
 
         self.admin_state_up = admin_state_up
         self.connection_limit = connection_limit
@@ -162,6 +162,7 @@ class Listener(BaseDataModel):
         self.client_crl_container_data = client_crl_container_data
         self.project_id = project_id
         self.allowed_cidrs = allowed_cidrs
+        self.tls_versions = tls_versions
         self.tls_ciphers = tls_ciphers
 
 
@@ -174,7 +175,7 @@ class Pool(BaseDataModel):
                  tls_container_data=Unset, ca_tls_container_ref=Unset,
                  ca_tls_container_data=Unset, crl_container_ref=Unset,
                  crl_container_data=Unset, tls_enabled=Unset,
-                 project_id=Unset, tls_ciphers=Unset):
+                 project_id=Unset, tls_versions=Unset, tls_ciphers=Unset):
 
         self.admin_state_up = admin_state_up
         self.description = description
@@ -195,6 +196,7 @@ class Pool(BaseDataModel):
         self.crl_container_data = crl_container_data
         self.tls_enabled = tls_enabled
         self.project_id = project_id
+        self.tls_versions = tls_versions
         self.tls_ciphers = tls_ciphers
 
 
