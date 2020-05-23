@@ -41,19 +41,10 @@ master_doc = 'index'
 # General information about the project.
 copyright = u'2018-2019, OpenStack Octavia Team'
 
-# The version info for the project you're documenting, acts as replacement for
-# |version| and |release|, also used in various other places throughout the
-# built documents.
-#
-# Version info
-from octavia_lib.version import version_info as octavia_lib_version
-release = octavia_lib_version.release_string()
-# The short X.Y version.
-version = octavia_lib_version.version_string()
-
 # openstackdocstheme options
-repository_name = 'openstack/octavia-lib'
-use_storyboard = True
+openstackdocs_repo_name = 'openstack/octavia-lib'
+openstackdocs_pdf_link = True
+openstackdocs_use_storyboard = True
 
 apidoc_output_dir = 'reference/modules'
 apidoc_module_dir = '../../octavia_lib'
@@ -72,7 +63,7 @@ add_function_parentheses = True
 add_module_names = True
 
 # The name of the Pygments (syntax highlighting) style to use.
-pygments_style = 'sphinx'
+pygments_style = 'native'
 
 # -- Options for HTML output --------------------------------------------------
 
