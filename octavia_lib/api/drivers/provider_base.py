@@ -487,6 +487,7 @@ class ProviderDriver():
         :raises NotImplementedError: The driver does not support flavors.
         :raises UnsupportedOptionError: if driver does not
           support one of the configuration options.
+        :raises NotFound: if the driver cannot find a resource.
         """
         raise exceptions.NotImplementedError(
             user_fault_string='This provider does not support validating '

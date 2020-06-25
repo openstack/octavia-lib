@@ -1,0 +1,5 @@
+---
+features:
+  - |
+    Added a ``NotFound`` exception class that provider drivers can raise when
+    a resource cannot be found.

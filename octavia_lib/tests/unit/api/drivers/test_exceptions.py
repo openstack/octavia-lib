@@ -86,3 +86,14 @@ class TestProviderExceptions(base.TestCase):
         self.assertEqual(self.fault_object_id,
                          update_stats_error.stats_object_id)
         self.assertEqual(self.fault_record, update_stats_error.stats_record)
+
+    def test_NotFound(self):
+        not_found_error = exceptions.NotFound(
+            user_fault_string=self.user_fault_string,
+            operator_fault_string=self.operator_fault_string)
+
+        self.assertEqual(self.user_fault_string,
+                         not_found_error.user_fault_string)
+        self.assertEqual(self.operator_fault_string,
+                         not_found_error.operator_fault_string)
+        self.assertIsInstance(not_found_error, Exception)
