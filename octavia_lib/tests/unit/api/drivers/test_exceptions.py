@@ -72,6 +72,7 @@ class TestProviderExceptions(base.TestCase):
         self.assertEqual(self.fault_object_id,
                          update_status_error.status_object_id)
         self.assertEqual(self.fault_record, update_status_error.status_record)
+        self.assertIsInstance(update_status_error, Exception)
 
     def test_UpdateStatisticsError(self):
         update_stats_error = exceptions.UpdateStatisticsError(
@@ -86,6 +87,7 @@ class TestProviderExceptions(base.TestCase):
         self.assertEqual(self.fault_object_id,
                          update_stats_error.stats_object_id)
         self.assertEqual(self.fault_record, update_stats_error.stats_record)
+        self.assertIsInstance(update_stats_error, Exception)
 
     def test_NotFound(self):
         not_found_error = exceptions.NotFound(
