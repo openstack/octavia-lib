@@ -31,3 +31,4 @@ The full terms and conditions of this license are detailed in the LICENSE file.
 * Documentation: https://docs.openstack.org/octavia-lib/latest
 * Source: https://opendev.org/openstack/octavia-lib
 * Bugs: https://storyboard.openstack.org/#!/project/openstack/octavia-lib
+* Release Notes: https://docs.openstack.org/releasenotes/octavia-lib/
