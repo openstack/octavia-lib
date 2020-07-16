@@ -16,7 +16,7 @@
 #    under the License.
 
 
-class BaseDataModel(object):
+class BaseDataModel():
     def to_dict(self, calling_classes=None, recurse=False,
                 render_unsets=False, **kwargs):
         """Converts a data model to a dictionary."""
@@ -82,7 +82,7 @@ class BaseDataModel(object):
         return cls(**dict)
 
 
-class UnsetType(object):
+class UnsetType():
     def __bool__(self):
         return False
     __nonzero__ = __bool__

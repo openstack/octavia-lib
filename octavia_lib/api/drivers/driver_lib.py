@@ -30,7 +30,7 @@ SOCKET_TIMEOUT = 5
 DRIVER_AGENT_TIMEOUT = 30
 
 
-class DriverLibrary(object):
+class DriverLibrary():
 
     @tenacity.retry(
         stop=tenacity.stop_after_attempt(30), reraise=True,

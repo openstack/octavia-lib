@@ -18,7 +18,7 @@ from octavia_lib.api.drivers import exceptions
 # Load balancing provider drivers will implement this interface.
 
 
-class ProviderDriver(object):
+class ProviderDriver():
     # name is for internal Octavia use and should not be used by drivers
     name = None
 
