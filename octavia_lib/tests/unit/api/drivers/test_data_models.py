@@ -107,7 +107,10 @@ class TestProviderDataModels(base.TestCase):
                           constants.TLS_VERSION_1_1,
                           constants.TLS_VERSION_1_2,
                           constants.TLS_VERSION_1_3],
-            tls_ciphers=None)
+            tls_ciphers=None,
+            alpn_protocols=[constants.ALPN_PROTOCOL_HTTP_1_0,
+                            constants.ALPN_PROTOCOL_HTTP_1_1,
+                            constants.ALPN_PROTOCOL_HTTP_2])
 
         self.ref_lb = data_models.LoadBalancer(
             admin_state_up=False,
@@ -253,7 +256,10 @@ class TestProviderDataModels(base.TestCase):
                              constants.TLS_VERSION_1_1,
                              constants.TLS_VERSION_1_2,
                              constants.TLS_VERSION_1_3],
-            'tls_ciphers': None}
+            'tls_ciphers': None,
+            'alpn_protocols': [constants.ALPN_PROTOCOL_HTTP_1_0,
+                               constants.ALPN_PROTOCOL_HTTP_1_1,
+                               constants.ALPN_PROTOCOL_HTTP_2]}
 
         self.ref_lb_dict_with_listener = {
             'admin_state_up': False,
@@ -367,6 +373,7 @@ class TestProviderDataModels(base.TestCase):
         ref_list_dict.pop('sni_container_data', None)
         ref_list_dict.pop('sni_container_refs', None)
         ref_list_dict.pop('tls_versions', None)
+        ref_list_dict.pop('alpn_protocols', None)
         ref_pool_dict = deepcopy(self.ref_pool_dict)
         ref_pool_dict['healthmonitor'] = None
         ref_pool_dict.pop('members', None)

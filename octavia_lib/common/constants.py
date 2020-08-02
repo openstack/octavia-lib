@@ -147,6 +147,11 @@ LISTENER_SUPPORTED_PROTOCOLS = (PROTOCOL_TCP, PROTOCOL_HTTPS, PROTOCOL_HTTP,
 POOL_SUPPORTED_PROTOCOLS = (PROTOCOL_TCP, PROTOCOL_HTTP, PROTOCOL_HTTPS,
                             PROTOCOL_PROXY, PROTOCOL_UDP, PROTOCOL_SCTP)
 
+
+ALPN_PROTOCOL_HTTP_1_0 = "http/1.0"
+ALPN_PROTOCOL_HTTP_1_1 = "http/1.1"
+ALPN_PROTOCOL_HTTP_2 = "h2"
+
 PROVISIONING_STATUS = 'provisioning_status'
 # Amphora has been allocated to a load balancer
 AMPHORA_ALLOCATED = 'ALLOCATED'
@@ -195,6 +200,7 @@ ADDITIONAL_VIPS = 'additional_vips'
 ADDRESS = 'address'
 ADMIN_STATE_UP = 'admin_state_up'
 ALLOWED_CIDRS = 'allowed_cidrs'
+ALPN_PROTOCOLS = 'alpn_protocols'
 AVAILABILITY_ZONE = 'availability_zone'
 BACKUP = 'backup'
 CA_TLS_CONTAINER_DATA = 'ca_tls_container_data'
