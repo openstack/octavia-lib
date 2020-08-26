@@ -24,7 +24,7 @@ class TestProviderBase(base.TestCase):
     NotImplementedError.
     """
     def setUp(self):
-        super(TestProviderBase, self).setUp()
+        super().setUp()
         self.driver = driver_base.ProviderDriver()
 
     def test_create_vip_port(self):

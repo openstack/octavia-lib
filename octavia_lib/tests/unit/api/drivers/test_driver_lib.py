@@ -26,7 +26,7 @@ class TestDriverLib(base.TestCase):
     def setUp(self, mock_check_ready):
         self.driver_lib = driver_lib.DriverLibrary()
 
-        super(TestDriverLib, self).setUp()
+        super().setUp()
 
     @mock.patch('octavia_lib.api.drivers.driver_lib.DriverLibrary.'
                 '_check_for_socket_ready.retry.sleep')

@@ -24,7 +24,7 @@ from octavia_lib.tests.unit import base
 class TestProviderDataModels(base.TestCase):
 
     def setUp(self):
-        super(TestProviderDataModels, self).setUp()
+        super().setUp()
 
         self.loadbalancer_id = uuidutils.generate_uuid()
         self.project_id = uuidutils.generate_uuid()

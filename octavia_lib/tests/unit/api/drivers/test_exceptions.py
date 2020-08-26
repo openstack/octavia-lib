@@ -19,7 +19,7 @@ from octavia_lib.tests.unit import base
 class TestProviderExceptions(base.TestCase):
 
     def setUp(self):
-        super(TestProviderExceptions, self).setUp()
+        super().setUp()
         self.user_fault_string = 'Bad driver'
         self.operator_fault_string = 'Fix bad driver.'
         self.fault_object = 'MCP'

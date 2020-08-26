@@ -54,7 +54,7 @@ class DriverLibrary():
         self._check_for_socket_ready(stats_socket)
         self._check_for_socket_ready(get_socket)
 
-        super(DriverLibrary, self).__init__(**kwargs)
+        super().__init__(**kwargs)
 
     def _recv(self, sock):
         size_str = b''
@@ -158,8 +158,8 @@ class DriverLibrary():
                                                 constants.ID: id})
         except driver_exceptions.DriverAgentTimeout:
             raise
-        except Exception:
-            raise driver_exceptions.DriverError()
+        except Exception as e:
+            raise driver_exceptions.DriverError() from e
 
     def get_loadbalancer(self, loadbalancer_id):
         """Get a load balancer object.

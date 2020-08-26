@@ -38,8 +38,7 @@ class DriverError(Exception):
                                             self.user_fault_string)
         self.operator_fault_string = kwargs.pop('operator_fault_string',
                                                 self.operator_fault_string)
-        super(DriverError, self).__init__(self.user_fault_string,
-                                          *args, **kwargs)
+        super().__init__(self.user_fault_string, *args, **kwargs)
 
 
 class NotImplementedError(Exception):
@@ -60,8 +59,7 @@ class NotImplementedError(Exception):
                                             self.user_fault_string)
         self.operator_fault_string = kwargs.pop('operator_fault_string',
                                                 self.operator_fault_string)
-        super(NotImplementedError, self).__init__(self.user_fault_string,
-                                                  *args, **kwargs)
+        super().__init__(self.user_fault_string, *args, **kwargs)
 
 
 class UnsupportedOptionError(Exception):
@@ -90,8 +88,7 @@ class UnsupportedOptionError(Exception):
                                             self.user_fault_string)
         self.operator_fault_string = kwargs.pop('operator_fault_string',
                                                 self.operator_fault_string)
-        super(UnsupportedOptionError, self).__init__(self.user_fault_string,
-                                                     *args, **kwargs)
+        super().__init__(self.user_fault_string, *args, **kwargs)
 
 
 class UpdateStatusError(Exception):
@@ -119,8 +116,7 @@ class UpdateStatusError(Exception):
         self.status_object_id = kwargs.pop('status_object_id', None)
         self.status_record = kwargs.pop('status_record', None)
 
-        super(UpdateStatusError, self).__init__(self.fault_string,
-                                                *args, **kwargs)
+        super().__init__(self.fault_string, *args, **kwargs)
 
 
 class UpdateStatisticsError(Exception):
@@ -149,8 +145,7 @@ class UpdateStatisticsError(Exception):
         self.stats_object_id = kwargs.pop('stats_object_id', None)
         self.stats_record = kwargs.pop('stats_record', None)
 
-        super(UpdateStatisticsError, self).__init__(self.fault_string,
-                                                    *args, **kwargs)
+        super().__init__(self.fault_string, *args, **kwargs)
 
 
 class DriverAgentNotFound(Exception):
@@ -165,8 +160,7 @@ class DriverAgentNotFound(Exception):
 
     def __init__(self, *args, **kwargs):
         self.fault_string = kwargs.pop('fault_string', self.fault_string)
-        super(DriverAgentNotFound, self).__init__(self.fault_string,
-                                                  *args, **kwargs)
+        super().__init__(self.fault_string, *args, **kwargs)
 
 
 class DriverAgentTimeout(Exception):
@@ -182,8 +176,7 @@ class DriverAgentTimeout(Exception):
 
     def __init__(self, *args, **kwargs):
         self.fault_string = kwargs.pop('fault_string', self.fault_string)
-        super(DriverAgentTimeout, self).__init__(self.fault_string,
-                                                 *args, **kwargs)
+        super().__init__(self.fault_string, *args, **kwargs)
 
 
 class NotFound(Exception):
@@ -209,5 +202,4 @@ class NotFound(Exception):
                                             self.user_fault_string)
         self.operator_fault_string = kwargs.pop('operator_fault_string',
                                                 self.operator_fault_string)
-        super(NotFound, self).__init__(self.user_fault_string,
-                                       *args, **kwargs)
+        super().__init__(self.user_fault_string, *args, **kwargs)
