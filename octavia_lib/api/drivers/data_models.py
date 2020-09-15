@@ -177,7 +177,8 @@ class Pool(BaseDataModel):
                  tls_container_data=Unset, ca_tls_container_ref=Unset,
                  ca_tls_container_data=Unset, crl_container_ref=Unset,
                  crl_container_data=Unset, tls_enabled=Unset,
-                 project_id=Unset, tls_versions=Unset, tls_ciphers=Unset):
+                 project_id=Unset, tls_versions=Unset, tls_ciphers=Unset,
+                 alpn_protocols=Unset):
 
         self.admin_state_up = admin_state_up
         self.description = description
@@ -200,6 +201,7 @@ class Pool(BaseDataModel):
         self.project_id = project_id
         self.tls_versions = tls_versions
         self.tls_ciphers = tls_ciphers
+        self.alpn_protocols = alpn_protocols
 
 
 class Member(BaseDataModel):

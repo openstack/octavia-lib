@@ -183,7 +183,10 @@ class TestProviderDataModels(base.TestCase):
                           constants.TLS_VERSION_1_1,
                           constants.TLS_VERSION_1_2,
                           constants.TLS_VERSION_1_3],
-            tls_ciphers=None)
+            tls_ciphers=None,
+            alpn_protocols=[constants.ALPN_PROTOCOL_HTTP_1_0,
+                            constants.ALPN_PROTOCOL_HTTP_1_1,
+                            constants.ALPN_PROTOCOL_HTTP_2])
 
         self.ref_l7rule_dict = {'admin_state_up': True,
                                 'compare_type': 'STARTS_WITH',
@@ -332,7 +335,10 @@ class TestProviderDataModels(base.TestCase):
                              constants.TLS_VERSION_1_1,
                              constants.TLS_VERSION_1_2,
                              constants.TLS_VERSION_1_3],
-            'tls_ciphers': None}
+            'tls_ciphers': None,
+            'alpn_protocols': [constants.ALPN_PROTOCOL_HTTP_1_0,
+                               constants.ALPN_PROTOCOL_HTTP_1_1,
+                               constants.ALPN_PROTOCOL_HTTP_2]}
 
     def test_equality(self):
         second_ref_lb = deepcopy(self.ref_lb)
@@ -378,6 +384,7 @@ class TestProviderDataModels(base.TestCase):
         ref_pool_dict['healthmonitor'] = None
         ref_pool_dict.pop('members', None)
         ref_pool_dict.pop('tls_versions', None)
+        ref_pool_dict.pop('alpn_protocols', None)
         ref_l7policy_dict = deepcopy(self.ref_l7policy_dict)
         ref_l7policy_dict.pop('rules', None)
 

@@ -1,0 +1,7 @@
+---
+features:
+  - |
+    Added parameter ``alpn_protocols`` to pools. This parameter contains
+    the list of protocols supported by pools, in descending order of
+    preference. The supported protocols are ``http/1.0``, ``http/1.1``
+    and ``h2``.
