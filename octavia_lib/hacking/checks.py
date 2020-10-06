@@ -41,7 +41,7 @@ _log_translation_hint = re.compile(
 
 assert_trueinst_re = re.compile(
     r"(.)*assertTrue\(isinstance\((\w|\.|\'|\"|\[|\])+, "
-    "(\w|\.|\'|\"|\[|\])+\)\)")
+    r"(\w|\.|\'|\"|\[|\])+\)\)")
 assert_equal_in_end_with_true_or_false_re = re.compile(
     r"assertEqual\((\w|[][.'\"])+ in (\w|[][.'\", ])+, (True|False)\)")
 assert_equal_in_start_with_true_or_false_re = re.compile(
@@ -92,14 +92,14 @@ def _check_namespace_imports(failure_code, namespace, new_ns, logical_line,
             logical_line.replace('%s.' % namespace, new_ns),
             logical_line)
         return (0, msg_o or msg)
-    elif _check_imports(namespace_imports_from_root, namespace, logical_line):
+    if _check_imports(namespace_imports_from_root, namespace, logical_line):
         msg = ("%s: '%s' must be used instead of '%s'.") % (
             failure_code,
             logical_line.replace(
                 'from %s import ' % namespace, 'import %s' % new_ns),
             logical_line)
         return (0, msg_o or msg)
-    elif _check_imports(namespace_imports_dot, namespace, logical_line):
+    if _check_imports(namespace_imports_dot, namespace, logical_line):
         msg = ("%s: '%s' must be used instead of '%s'.") % (
             failure_code,
             logical_line.replace('import', 'from').replace('.', ' import '),
