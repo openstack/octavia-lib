@@ -39,7 +39,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-copyright = u'2018-2019, OpenStack Octavia Team'
+copyright = '2018-2019, OpenStack Octavia Team'
 
 # openstackdocstheme options
 openstackdocs_repo_name = 'openstack/octavia-lib'
@@ -116,8 +116,8 @@ smartquotes_excludes = {'builders': ['latex']}
 latex_documents = [(
     'index',
     'doc-octavia-lib.tex',
-    u'Octavia Library Documentation',
-    u'OpenStack Octavia Team',
+    'Octavia Library Documentation',
+    'OpenStack Octavia Team',
     'manual'
 )]
 
