@@ -110,7 +110,7 @@ class ProviderDriver():
             operator_fault_string='This provider does not support failing '
                                   'over load balancers.')
 
-    def loadbalancer_update(self, old_loadbalancer, new_loadbalncer):
+    def loadbalancer_update(self, old_loadbalancer, new_loadbalancer):
         """Updates a load balancer.
 
         :param old_loadbalancer: The baseline load balancer object.
