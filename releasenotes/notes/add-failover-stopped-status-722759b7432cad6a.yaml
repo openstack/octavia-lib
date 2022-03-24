@@ -1,0 +1,5 @@
+---
+features:
+  - |
+    Introduce new provisioning status 'FAILOVER_STOPPED' for amphorae. This status will
+    be used when a configured failover threshold is reached.
