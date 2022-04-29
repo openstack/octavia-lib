@@ -3,11 +3,11 @@
       - check-requirements
       - openstack-cover-jobs
       - openstack-lower-constraints-jobs
-      - openstack-python3-yoga-jobs
+      - openstack-python3-zed-jobs
       - publish-openstack-docs-pti
       - release-notes-jobs-python3
       - octavia-tox-tips
     check:
       jobs:
-        - octavia-tox-functional-py37-tips:
+        - octavia-tox-functional-py39-tips:
             voting: false
