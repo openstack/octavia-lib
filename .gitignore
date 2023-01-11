@@ -63,3 +63,6 @@ releasenotes/build
 # IDEs
 .idea/*
 .vscode/*
+
+# Git
+*.orig
