@@ -76,6 +76,11 @@ class BaseDataModel():
     def __ne__(self, other):
         return not self.__eq__(other)
 
+    def __repr__(self):
+        attrs = ", ".join(
+            "{}={!r}".format(k, v) for k, v in sorted(self.__dict__.items()))
+        return f"{self.__class__.__name__}({attrs})"
+
     @classmethod
     def from_dict(cls, dict):
         return cls(**dict)
@@ -116,6 +121,11 @@ class LoadBalancer(BaseDataModel):
         self.vip_qos_policy_id = vip_qos_policy_id
         self.additional_vips = additional_vips
         self.availability_zone = availability_zone
+
+    def __str__(self):
+        return (f"LoadBalancer(loadbalancer_id="
+                f"{self.loadbalancer_id!r}, name={self.name!r}, "
+                f"project_id={self.project_id!r})")
 
 
 class Listener(BaseDataModel):
@@ -166,6 +176,11 @@ class Listener(BaseDataModel):
         self.tls_ciphers = tls_ciphers
         self.alpn_protocols = alpn_protocols
 
+    def __str__(self):
+        return (f"Listener(listener_id="
+                f"{self.listener_id!r}, name={self.name!r}, "
+                f"project_id={self.project_id!r})")
+
 
 class Pool(BaseDataModel):
     def __init__(self, admin_state_up=Unset, description=Unset,
@@ -202,6 +217,11 @@ class Pool(BaseDataModel):
         self.tls_ciphers = tls_ciphers
         self.alpn_protocols = alpn_protocols
 
+    def __str__(self):
+        return (f"Pool(loadbalancer_id={self.loadbalancer_id!r}, "
+                f"name={self.name!r}, pool_id={self.pool_id!r}, "
+                f"project_id={self.project_id!r})")
+
 
 class Member(BaseDataModel):
     def __init__(self, address=Unset, admin_state_up=Unset, member_id=Unset,
@@ -221,6 +241,12 @@ class Member(BaseDataModel):
         self.weight = weight
         self.backup = backup
         self.project_id = project_id
+
+    def __str__(self):
+        return (f"Member(address={self.address!r}, "
+                f"member_id={self.member_id!r}, name={self.name!r}, "
+                f"pool_id={self.pool_id!r}, project_id={self.project_id!r}, "
+                f"subnet_id={self.subnet_id!r}, weight={self.weight!r})")
 
 
 class HealthMonitor(BaseDataModel):
@@ -246,6 +272,11 @@ class HealthMonitor(BaseDataModel):
         self.domain_name = domain_name
         self.project_id = project_id
 
+    def __str__(self):
+        return (f"HealthMonitor(healthmonitor_id="
+                f"{self.healthmonitor_id!r}, name={self.name!r}, "
+                f"project_id={self.project_id!r})")
+
 
 class L7Policy(BaseDataModel):
     def __init__(self, action=Unset, admin_state_up=Unset, description=Unset,
@@ -268,12 +299,16 @@ class L7Policy(BaseDataModel):
         self.redirect_http_code = redirect_http_code
         self.project_id = project_id
 
+    def __str__(self):
+        return (f"L7Policy(l7policy_id="
+                f"{self.l7policy_id!r}, name={self.name!r}, "
+                f"project_id={self.project_id!r})")
+
 
 class L7Rule(BaseDataModel):
     def __init__(self, admin_state_up=Unset, compare_type=Unset, invert=Unset,
                  key=Unset, l7policy_id=Unset, l7rule_id=Unset, type=Unset,
                  value=Unset, project_id=Unset):
-
         self.admin_state_up = admin_state_up
         self.compare_type = compare_type
         self.invert = invert
@@ -283,6 +318,11 @@ class L7Rule(BaseDataModel):
         self.type = type
         self.value = value
         self.project_id = project_id
+
+    def __str__(self):
+        return (f"L7Rule(l7policy_id={self.l7policy_id!r}, "
+                f"l7rule_id={self.l7rule_id!r}, "
+                f"project_id={self.project_id!r})")
 
 
 class VIP(BaseDataModel):
