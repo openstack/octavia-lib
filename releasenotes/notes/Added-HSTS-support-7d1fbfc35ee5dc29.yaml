@@ -1,0 +1,4 @@
+---
+features:
+  - |
+    Added support for HTTP Strict Transport Security (HSTS). 

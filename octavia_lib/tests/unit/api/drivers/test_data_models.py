@@ -110,7 +110,11 @@ class TestProviderDataModels(base.TestCase):
             tls_ciphers=None,
             alpn_protocols=[constants.ALPN_PROTOCOL_HTTP_1_0,
                             constants.ALPN_PROTOCOL_HTTP_1_1,
-                            constants.ALPN_PROTOCOL_HTTP_2])
+                            constants.ALPN_PROTOCOL_HTTP_2],
+            hsts_max_age=None,
+            hsts_include_subdomains=None,
+            hsts_preload=None,
+        )
 
         self.ref_lb = data_models.LoadBalancer(
             admin_state_up=False,
@@ -262,7 +266,11 @@ class TestProviderDataModels(base.TestCase):
             'tls_ciphers': None,
             'alpn_protocols': [constants.ALPN_PROTOCOL_HTTP_1_0,
                                constants.ALPN_PROTOCOL_HTTP_1_1,
-                               constants.ALPN_PROTOCOL_HTTP_2]}
+                               constants.ALPN_PROTOCOL_HTTP_2],
+            'hsts_max_age': None,
+            'hsts_include_subdomains': None,
+            'hsts_preload': None,
+        }
 
         self.ref_lb_dict_with_listener = {
             'admin_state_up': False,
@@ -277,7 +285,8 @@ class TestProviderDataModels(base.TestCase):
             'vip_port_id': self.vip_port_id,
             'vip_subnet_id': self.vip_subnet_id,
             'vip_qos_policy_id': self.vip_qos_policy_id,
-            'availability_zone': self.availability_zone}
+            'availability_zone': self.availability_zone,
+        }
 
         self.ref_vip_dict = {
             'vip_address': self.vip_address,

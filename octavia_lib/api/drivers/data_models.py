@@ -14,6 +14,7 @@
 #    WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
 #    License for the specific language governing permissions and limitations
 #    under the License.
+import typing as tp
 
 
 class BaseDataModel():
@@ -133,7 +134,8 @@ class Listener(BaseDataModel):
                  client_authentication=Unset, client_crl_container_ref=Unset,
                  client_crl_container_data=Unset, project_id=Unset,
                  allowed_cidrs=Unset, tls_versions=Unset, tls_ciphers=Unset,
-                 alpn_protocols=Unset):
+                 alpn_protocols=Unset, hsts_max_age=Unset,
+                 hsts_include_subdomains=Unset, hsts_preload=Unset):
 
         self.admin_state_up = admin_state_up
         self.connection_limit = connection_limit
@@ -165,6 +167,10 @@ class Listener(BaseDataModel):
         self.tls_versions = tls_versions
         self.tls_ciphers = tls_ciphers
         self.alpn_protocols = alpn_protocols
+        self.hsts_max_age: tp.Union[int, UnsetType] = hsts_max_age
+        self.hsts_include_subdomains: tp.Union[bool, UnsetType] = (
+            hsts_include_subdomains)
+        self.hsts_preload: tp.Union[bool, UnsetType] = hsts_preload
 
 
 class Pool(BaseDataModel):
