@@ -58,11 +58,19 @@ class DriverLibrary():
 
     def _recv(self, sock):
         size_str = b''
-        char = sock.recv(1)
         begin = time.time()
-        while char != b'\n':
-            size_str += char
-            char = sock.recv(1)
+        while True:
+            try:
+                char = sock.recv(1)
+            except socket.timeout:
+                # We could have an overloaded DB and the query may take too
+                # long, so as long as DRIVER_AGENT_TIMEOUT hasn't expired,
+                # let's keep trying while not blocking everything.
+                pass
+            else:
+                if char == b'\n':
+                    break
+                size_str += char
             if time.time() - begin > DRIVER_AGENT_TIMEOUT:
                 raise driver_exceptions.DriverAgentTimeout(
                     fault_string=('The driver agent did not respond in {} '
