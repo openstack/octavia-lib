@@ -1,0 +1,5 @@
+---
+fixes:
+  - |
+    Fixed a possible receive timeout if the driver agent didn't respond inside
+    five seconds. For example if you have a very slow database.
