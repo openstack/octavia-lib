@@ -185,7 +185,7 @@ def no_log_warn(logical_line):
     O339
     """
     if logical_line.startswith('LOG.warn('):
-        yield(0, "O339:Use LOG.warning() rather than LOG.warn()")
+        yield (0, "O339:Use LOG.warning() rather than LOG.warn()")
 
 
 @core.flake8ext
@@ -248,7 +248,7 @@ def check_no_basestring(logical_line):
     if no_basestring_re.search(logical_line):
         msg = ("O343: basestring is not Python3-compatible, use "
                "str instead.")
-        yield(0, msg)
+        yield (0, msg)
 
 
 @core.flake8ext
