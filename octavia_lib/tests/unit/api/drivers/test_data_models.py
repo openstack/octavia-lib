@@ -497,3 +497,38 @@ class TestProviderDataModels(base.TestCase):
 
     def test_unset_repr(self):
         self.assertEqual('Unset', repr(data_models.Unset))
+
+    def test_str(self):
+        self.assertEqual(
+            f"HealthMonitor(healthmonitor_id="
+            f"{self.healthmonitor_id!r}, name='member', "
+            f"project_id={self.project_id!r})", str(self.ref_healthmonitor))
+        self.assertEqual(
+            f"L7Policy(l7policy_id={self.l7policy_id!r}, name='l7policy', "
+            f"project_id={self.project_id!r})", str(self.ref_l7policy))
+        self.assertEqual(
+            f"L7Rule(l7policy_id={self.l7policy_id!r}, "
+            f"l7rule_id={self.l7rule_id!r}, project_id={self.project_id!r})",
+            str(self.ref_l7rule))
+        self.assertEqual(
+            f"LoadBalancer(loadbalancer_id={self.loadbalancer_id!r}, "
+            f"name='favorite_lb', project_id={self.project_id!r})",
+            str(self.ref_lb))
+        self.assertEqual(
+            f"Member(address='192.0.2.10', member_id={self.member_id!r}, "
+            f"name='member', pool_id={self.pool_id!r}, "
+            f"project_id={self.project_id!r}, "
+            f"subnet_id={self.ref_member.subnet_id!r}, weight=1)",
+            str(self.ref_member))
+        self.assertEqual(
+            f"Pool(loadbalancer_id={self.loadbalancer_id!r}, "
+            f"name='pool', pool_id={self.pool_id!r}, "
+            f"project_id={self.project_id!r})",
+            str(self.ref_pool))
+        self.assertEqual(
+            f"VIP(vip_address='192.0.2.83', "
+            f"vip_network_id={self.vip_network_id!r}, "
+            f"vip_port_id={self.vip_port_id!r}, vip_qos_policy_id="
+            f"{self.vip_qos_policy_id!r}, "
+            f"vip_subnet_id={self.vip_subnet_id!r})",
+            str(self.ref_vip))
