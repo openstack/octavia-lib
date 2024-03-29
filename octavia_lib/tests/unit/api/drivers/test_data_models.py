@@ -150,7 +150,8 @@ class TestProviderDataModels(base.TestCase):
             protocol_port=80,
             subnet_id=self.mem_subnet_id,
             weight=1,
-            backup=False)
+            backup=False,
+            vnic_type=constants.VNIC_TYPE_NORMAL)
 
         self.ref_healthmonitor = data_models.HealthMonitor(
             admin_state_up=False,
@@ -307,7 +308,8 @@ class TestProviderDataModels(base.TestCase):
             'protocol_port': 80,
             'subnet_id': self.mem_subnet_id,
             'weight': 1,
-            'backup': False}
+            'backup': False,
+            'vnic_type': constants.VNIC_TYPE_NORMAL}
 
         self.ref_healthmonitor_dict = {
             'admin_state_up': False,
@@ -518,7 +520,8 @@ class TestProviderDataModels(base.TestCase):
             f"Member(address='192.0.2.10', member_id={self.member_id!r}, "
             f"name='member', pool_id={self.pool_id!r}, "
             f"project_id={self.project_id!r}, "
-            f"subnet_id={self.ref_member.subnet_id!r}, weight=1)",
+            f"subnet_id={self.ref_member.subnet_id!r}, weight=1, "
+            f"vnic_type='{constants.VNIC_TYPE_NORMAL}')",
             str(self.ref_member))
         self.assertEqual(
             f"Pool(loadbalancer_id={self.loadbalancer_id!r}, "

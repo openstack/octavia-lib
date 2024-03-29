@@ -233,7 +233,8 @@ class Member(BaseDataModel):
     def __init__(self, address=Unset, admin_state_up=Unset, member_id=Unset,
                  monitor_address=Unset, monitor_port=Unset, name=Unset,
                  pool_id=Unset, protocol_port=Unset, subnet_id=Unset,
-                 weight=Unset, backup=Unset, project_id=Unset):
+                 weight=Unset, backup=Unset, project_id=Unset,
+                 vnic_type=Unset):
 
         self.address = address
         self.admin_state_up = admin_state_up
@@ -247,12 +248,14 @@ class Member(BaseDataModel):
         self.weight = weight
         self.backup = backup
         self.project_id = project_id
+        self.vnic_type = vnic_type
 
     def __str__(self):
         return (f"Member(address={self.address!r}, "
                 f"member_id={self.member_id!r}, name={self.name!r}, "
                 f"pool_id={self.pool_id!r}, project_id={self.project_id!r}, "
-                f"subnet_id={self.subnet_id!r}, weight={self.weight!r})")
+                f"subnet_id={self.subnet_id!r}, weight={self.weight!r}, "
+                f"vnic_type={self.vnic_type!r})")
 
 
 class HealthMonitor(BaseDataModel):

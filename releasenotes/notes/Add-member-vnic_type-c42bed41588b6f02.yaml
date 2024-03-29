@@ -1,0 +1,4 @@
+---
+features:
+  - |
+    Added the "vnic_type" field to the member object.
