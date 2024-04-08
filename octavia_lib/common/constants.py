@@ -185,7 +185,10 @@ SUPPORTED_SP_TYPES = (SESSION_PERSISTENCE_SOURCE_IP,
 # List of HTTP headers which are supported for insertion
 SUPPORTED_HTTP_HEADERS = ['X-Forwarded-For',
                           'X-Forwarded-Port',
-                          'X-Forwarded-Proto']
+                          'X-Forwarded-Proto',
+                          'X-Forwarded-IP',
+                          'X-Client-IP',
+                          'X-Real-IP']
 
 # List of SSL headers for client certificate
 SUPPORTED_SSL_HEADERS = ['X-SSL-Client-Verify', 'X-SSL-Client-Has-Cert',

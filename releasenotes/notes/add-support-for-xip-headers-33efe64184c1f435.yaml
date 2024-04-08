@@ -1,0 +1,4 @@
+---
+features:
+  - |
+    Add support for 'X-Client-IP', 'X-Forwarded-IP', 'X-Real-IP' headers.
