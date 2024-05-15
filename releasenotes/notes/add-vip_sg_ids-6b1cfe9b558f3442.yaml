@@ -1,0 +1,4 @@
+---
+features:
+  - |
+    Added 'vip_sg_ids' field to the LoadBalancer and VIP data models.

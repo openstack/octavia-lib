@@ -46,6 +46,8 @@ class TestProviderDataModels(base.TestCase):
         self.l7policy_id = uuidutils.generate_uuid()
         self.l7rule_id = uuidutils.generate_uuid()
         self.availability_zone = uuidutils.generate_uuid()
+        self.vip_sg1_id = uuidutils.generate_uuid()
+        self.vip_sg2_id = uuidutils.generate_uuid()
 
         self.ref_l7rule = data_models.L7Rule(
             admin_state_up=True,
@@ -129,14 +131,18 @@ class TestProviderDataModels(base.TestCase):
             vip_port_id=self.vip_port_id,
             vip_subnet_id=self.vip_subnet_id,
             vip_qos_policy_id=self.vip_qos_policy_id,
-            availability_zone=self.availability_zone)
+            availability_zone=self.availability_zone,
+            vip_sg_ids=[self.vip_sg1_id,
+                        self.vip_sg2_id])
 
         self.ref_vip = data_models.VIP(
             vip_address=self.vip_address,
             vip_network_id=self.vip_network_id,
             vip_port_id=self.vip_port_id,
             vip_subnet_id=self.vip_subnet_id,
-            vip_qos_policy_id=self.vip_qos_policy_id)
+            vip_qos_policy_id=self.vip_qos_policy_id,
+            vip_sg_ids=[self.vip_sg1_id,
+                        self.vip_sg2_id])
 
         self.ref_member = data_models.Member(
             address='192.0.2.10',
@@ -287,6 +293,8 @@ class TestProviderDataModels(base.TestCase):
             'vip_subnet_id': self.vip_subnet_id,
             'vip_qos_policy_id': self.vip_qos_policy_id,
             'availability_zone': self.availability_zone,
+            'vip_sg_ids': [self.vip_sg1_id,
+                           self.vip_sg2_id],
         }
 
         self.ref_vip_dict = {
@@ -433,6 +441,7 @@ class TestProviderDataModels(base.TestCase):
         new_ref_lib_dict['pools'] = None
         new_ref_lib_dict['listeners'] = None
         new_ref_lib_dict['additional_vips'] = None
+        new_ref_lib_dict['vip_sg_ids'] = None
 
         self.assertEqual(new_ref_lib_dict, ref_lb_converted_to_dict)
 
@@ -476,7 +485,8 @@ class TestProviderDataModels(base.TestCase):
             vip_port_id=self.vip_port_id,
             vip_subnet_id=self.vip_subnet_id,
             vip_qos_policy_id=self.vip_qos_policy_id,
-            availability_zone=self.availability_zone)
+            availability_zone=self.availability_zone,
+            vip_sg_ids=[self.vip_sg1_id, self.vip_sg2_id])
 
         ref_lb_dict_with_listener = deepcopy(self.ref_lb_dict_with_listener)
         ref_lb_dict_with_listener['pools'] = None
@@ -533,5 +543,6 @@ class TestProviderDataModels(base.TestCase):
             f"vip_network_id={self.vip_network_id!r}, "
             f"vip_port_id={self.vip_port_id!r}, vip_qos_policy_id="
             f"{self.vip_qos_policy_id!r}, "
+            f"vip_sg_ids=[{self.vip_sg1_id!r}, {self.vip_sg2_id!r}], "
             f"vip_subnet_id={self.vip_subnet_id!r})",
             str(self.ref_vip))
