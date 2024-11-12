@@ -12,8 +12,6 @@ Welcome to the documentation of Octavia lib
 
 .. only:: latex
 
-   .. image:: https://governance.openstack.org/tc/badges/octavia-lib.svg
-
    A library to support Octavia provider drivers.
 
    This python module provides a python library for Octavia provider driver
