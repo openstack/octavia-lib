@@ -1,0 +1,6 @@
+---
+fixes:
+  - |
+    Adds a "Conflict" exception drivers can raise when a resource conflict
+    occurs. This is part of a fix for error reporting when the requested VIP
+    address is already in use on the subnet.
