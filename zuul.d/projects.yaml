@@ -9,5 +9,5 @@
       - octavia-tox-tips
     check:
       jobs:
-        - octavia-tox-functional-py39-tips:
+        - octavia-tox-functional-py311-tips:
             voting: false
