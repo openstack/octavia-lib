@@ -1,15 +1,10 @@
-========================
-Team and repository tags
-========================
-
-.. image:: https://governance.openstack.org/tc/badges/octavia-lib.svg
-    :target: https://governance.openstack.org/tc/reference/tags/index.html
-
-.. Change things from this point on
-
 ===========
 octavia-lib
 ===========
+
+.. image:: https://governance.openstack.org/tc/badges/octavia-lib.svg
+
+.. Change things from this point on
 
 .. image:: https://img.shields.io/pypi/v/octavia-lib.svg
     :target: https://pypi.org/project/octavia-lib/
