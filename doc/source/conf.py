@@ -44,7 +44,8 @@ copyright = '2018-2019, OpenStack Octavia Team'
 # openstackdocstheme options
 openstackdocs_repo_name = 'openstack/octavia-lib'
 openstackdocs_pdf_link = True
-openstackdocs_use_storyboard = True
+openstackdocs_bug_project = 'octavia'
+openstackdocs_bug_tag = 'docs'
 
 apidoc_output_dir = 'reference/modules'
 apidoc_module_dir = '../../octavia_lib'
