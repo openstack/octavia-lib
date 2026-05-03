@@ -110,6 +110,23 @@ class ProviderDriver():
             operator_fault_string='This provider does not support failing '
                                   'over load balancers.')
 
+    def loadbalancer_failover_with_flavor(self, loadbalancer_id, flavor_id):
+        """Performs a fail over of a load balancer with a new flavor.
+
+        :param loadbalancer_id: ID of the load balancer to failover.
+        :type loadbalancer_id: string
+        :param flavor_id: ID of the flavor used to rebuild the load balancer.
+        :type flavor_id: string
+        :return: Nothing if the failover request was accepted.
+        :raises DriverError: An unexpected error occurred in the driver.
+        :raises: NotImplementedError if driver does not support request.
+        """
+        raise exceptions.NotImplementedError(
+            user_fault_string='This provider does not support failing over '
+                              'load balancers with a new flavor.',
+            operator_fault_string='This provider does not support failing '
+                                  'over load balancers with a new flavor.')
+
     def loadbalancer_update(self, old_loadbalancer, new_loadbalancer):
         """Updates a load balancer.
 

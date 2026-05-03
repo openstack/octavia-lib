@@ -1,0 +1,6 @@
+---
+features:
+  - |
+    Added ``loadbalancer_failover_with_flavor`` to the provider driver base
+    API. Provider drivers can implement this method to support rebuilding a
+    load balancer with a different flavor.

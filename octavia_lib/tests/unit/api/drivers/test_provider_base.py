@@ -47,6 +47,11 @@ class TestProviderBase(base.TestCase):
                           self.driver.loadbalancer_failover,
                           False)
 
+    def test_loadbalancer_failover_with_flavor(self):
+        self.assertRaises(exceptions.NotImplementedError,
+                          self.driver.loadbalancer_failover_with_flavor,
+                          False, False)
+
     def test_loadbalancer_update(self):
         self.assertRaises(exceptions.NotImplementedError,
                           self.driver.loadbalancer_update,
